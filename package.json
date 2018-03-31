@@ -1,0 +1,33 @@
+{
+  "name": "tagged-number",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tagged-number.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stpoa/tagged-number.git"
+  },
+  "keywords": [
+    "bignumber",
+    "tagged-number",
+    "tagged",
+    "big",
+    "number",
+    "js",
+    "bignumber.js"
+  ],
+  "author": "stpoa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stpoa/tagged-number/issues"
+  },
+  "homepage": "https://github.com/stpoa/tagged-number#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "bignumber.js": "^6.0.0",
+    "ramda": "^0.25.0"
+  }
+}

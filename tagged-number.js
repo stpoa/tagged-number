@@ -21,6 +21,10 @@ const replace = (map, input) =>
 	);
 
 function getMatchinTags(tagA, tagB, arr) {
+  if (arr.indexOf(tagA) === -1) {
+    return [[]];
+  }
+
 	const stackA = [];
 	const stackB = [];
 	const result = [];
@@ -29,20 +33,20 @@ function getMatchinTags(tagA, tagB, arr) {
 	let l = 1;
 	while (k < arr.length && l < arr.length) {
 		const indexA = arr.indexOf(tagA, k);
+    const indexB = arr.indexOf(tagB, l);
+
+    if (indexA === -1 && indexB === -1) {
+      break;
+    }
 		if (indexA !== -1) {
 			stackA.push(indexA);
 			k = indexA + 1;
-		} else {
-			result.push([]);
-		}
-		const indexB = arr.indexOf(tagB, l);
+		} 
 		if (indexB !== -1) {
 			stackB.push(indexB);
 			result.push([stackA.pop(), stackB.pop()]);
 			l = indexB + 1;
-		} else {
-			break;
-		}
+		} 
 	}
 	return result;
 }
@@ -68,7 +72,7 @@ function _(strings, ...values) {
     ? [...zipped, [last(strings), '']]
     : zipped;
 		const splitted = merged.map(
-	 	  pair => [replace(operatorsWithSpaces, pair[0]).split(' '), pair[1]]
+	 	  pair => [replace(operatorsWithSpaces, pair[0]).replace('e +', 'e+').split(' '), pair[1]]
 		);
 		return flatten(splitted).filter(e => e !== '');
 	}
@@ -103,8 +107,8 @@ function _(strings, ...values) {
       }
     }
   }
-  
-	return calculate(parse(strings, values));
+  const parsed = parse(strings, values)
+	return calculate(parsed);
 }
 
 module.exports = _;

@@ -3,7 +3,6 @@ const assert = require('assert')
 const BigNumber = require('bignumber.js')
 const bn = n => new BigNumber(n)
 
-
 const num = bn(100)
 
 assert.deepEqual(_`(8 + 2)`, bn(10))
